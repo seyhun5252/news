@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:news/controller/favoritedao.dart';
+import 'package:news/modules/extensions/sized_extensions.dart';
 
 import '../controller/news_controller.dart';
 import '../models/news_model.dart';
@@ -38,7 +39,7 @@ class DetailPage extends StatelessWidget {
           ),
           IconButton(
             onPressed: () async {
-              await FavoriteDAO().kisiEkle(
+              await FavoriteDAO().addFavorite(
                 news.title,
                 news.description.toString(),
                 news.publishedAt.toString(),
@@ -53,20 +54,20 @@ class DetailPage extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          const SizedBox(
-            height: 5,
+          SizedBox(
+            height: 1.0.h,
           ),
           ImageMethod.newMethod(
             data: news.urlToImage.toString(),
           ),
-          const SizedBox(
-            height: 8,
+          SizedBox(
+            height: 1.5.h,
           ),
           Text(
             news.title.toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
-          const SizedBox(height: 15),
+          SizedBox(height: 2.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -97,13 +98,12 @@ class DetailPage extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(left: 60.0, right: 60.0, bottom: 10),
         child: SizedBox(
-          height: 55,
-          width: 10,
+          height: 8.h,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               primary: Colors.white,
-              side: const BorderSide(
-                width: 2,
+              side: BorderSide(
+                width: 0.5.w,
                 color: Colors.black,
               ),
               shape: RoundedRectangleBorder(

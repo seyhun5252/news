@@ -4,7 +4,6 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:news/pages/home_page_genel.dart';
 
 void main() async {
-
   runApp(const MyApp());
 }
 
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
         ),
         primarySwatch: Colors.blue,
       ),
-      home:  HomePageGenel(),
+      home: const HomePageGenel(),
     );
   }
 }

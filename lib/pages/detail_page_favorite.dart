@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:news/modules/extensions/sized_extensions.dart';
 import 'package:news/modules/favorite.dart';
 
+import '../constants/language/constant_language.dart';
 import '../controller/favoritedao.dart';
 import '../controller/news_controller.dart';
 import '../modules/method/image_method.dart';
@@ -26,15 +28,12 @@ class DetailPageFavorite extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {
-              // Share.share('check out  website ${news.url}', subject: 'Good');
-              // controller.view(title: news.title);
-            },
+            onPressed: () {},
             icon: const Icon(Icons.upload_file),
           ),
           IconButton(
             onPressed: () async {
-              await FavoriteDAO().kisiSil(
+              await FavoriteDAO().deleteFavorite(
                 favorite.title,
               );
             },
@@ -44,20 +43,20 @@ class DetailPageFavorite extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          const SizedBox(
-            height: 5,
+          SizedBox(
+            height: 1.h,
           ),
           ImageMethod.newMethod(
             data: favorite.url.toString(),
           ),
-          const SizedBox(
-            height: 8,
+          SizedBox(
+            height: 1.2.h,
           ),
           Text(
             favorite.title.toString(),
             style: Theme.of(context).textTheme.headline6,
           ),
-          const SizedBox(height: 15),
+          SizedBox(height: 2.4.h),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
@@ -88,13 +87,12 @@ class DetailPageFavorite extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(left: 60.0, right: 60.0, bottom: 10),
         child: SizedBox(
-          height: 55,
-          width: 10,
+          height: 7.5.h,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
               primary: Colors.white,
-              side: const BorderSide(
-                width: 2,
+              side: BorderSide(
+                width: 0.5.w,
                 color: Colors.black,
               ),
               shape: RoundedRectangleBorder(
@@ -105,7 +103,7 @@ class DetailPageFavorite extends StatelessWidget {
               Get.to(const WebViewApp(), arguments: favorite.urlToImage);
             },
             child: Text(
-              'News Source',
+              ConstantLanguage.newsSource,
               style: Theme.of(context).textTheme.headline6?.copyWith(
                     color: Colors.black,
                   ),

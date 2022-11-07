@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-class Veritabani {
+class Databases {
   static const String veritabaniAdi = "rehber.sqlite";
   static Future<Database> veritabaniErisim() async {
     String veritabaniYolu = join(await getDatabasesPath(), veritabaniAdi);

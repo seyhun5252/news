@@ -50,6 +50,7 @@ class NewsModel {
       );
 
   Map<String, dynamic> toJson() => {
+        // ignore: prefer_null_aware_operators
         "source": source == null ? null : source.toJson(),
         "author": author == null ? null : author,
         "title": title == null ? null : title,
@@ -57,6 +58,7 @@ class NewsModel {
         "url": url == null ? null : url,
         "urlToImage": urlToImage == null ? null : urlToImage,
         "publishedAt":
+            // ignore: prefer_null_aware_operators
             publishedAt == null ? null : publishedAt.toIso8601String(),
         "content": content == null ? null : content,
       };

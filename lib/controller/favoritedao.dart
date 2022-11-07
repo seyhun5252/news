@@ -1,11 +1,9 @@
-import 'dart:ffi';
-
 import 'package:news/modules/favorite.dart';
 import 'package:news/services/veritabani.dart';
 
 class FavoriteDAO {
-  Future<List<Favorite>> tumKisiler() async {
-    var db = await Veritabani.veritabaniErisim();
+  Future<List<Favorite>> allFavorite() async {
+    var db = await Databases.veritabaniErisim();
     List<Map<String, dynamic>> maps =
         await db.rawQuery("SELECT * FROM favorite");
 
@@ -19,9 +17,9 @@ class FavoriteDAO {
     );
   }
 
-  Future<Void> kisiEkle(String title, String explanation, String date,
+  Future<void> addFavorite(String title, String explanation, String date,
       String author, String url, String urlToImage) async {
-    var db = await Veritabani.veritabaniErisim();
+    var db = await Databases.veritabaniErisim();
     var bilgiler = <String, dynamic>{};
     bilgiler["title"] = title;
     bilgiler["explanation"] = explanation;
@@ -33,8 +31,8 @@ class FavoriteDAO {
     await db.insert("favorite", bilgiler);
   }
 
-  Future<void> kisiSil(String title) async {
-    var db = await Veritabani.veritabaniErisim();
+  Future<void> deleteFavorite(String title) async {
+    var db = await Databases.veritabaniErisim();
     var bilgiler = <String, dynamic>{};
     bilgiler["title"] = title;
     return await db.delete('favorite', where: 'title = ?', whereArgs: [title]);

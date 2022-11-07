@@ -16,7 +16,7 @@ class FavoritePage extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Favorite> litems = <Favorite>[].obs;
     Future<void> kisileriGoster() async {
-      var liste = await FavoriteDAO().tumKisiler();
+      var liste = await FavoriteDAO().allFavorite();
       for (Favorite k in liste) {
         litems.add(k);
       }
